@@ -1,22 +1,22 @@
-.page-leave-left {
+.pageLeaveLeft {
     -webkit-animation: slide-left 1s normal linear;
     -o-animation: slide-left 1s normal linear;
     animation: slide-left 1s normal linear;
 }
 
-.page-leave-right {
+.pageLeaveRight {
     -webkit-animation: slide-right 1s normal linear;
     -o-animation: slide-right 1s normal linear;
     animation: slide-right 1s normal linear;
 }
 
-.page-enter-left {
+.pageEnterLeft {
     -webkit-animation: slide-left 1s reverse linear;
     -o-animation: slide-left 1s reverse linear;
     animation: slide-left 1s reverse linear;
 }
 
-.page-enter-right {
+.pageEnterRight {
     -webkit-animation: slide-right 1s reverse linear;
     -o-animation: slide-right 1s reverse linear;
     animation: slide-right 1s reverse linear;
@@ -25,7 +25,7 @@
 /* Slide out element to the left */
 @keyframes slide-left {
     
-    from {
+    0% {
         -webkit-transform: translateX(0%);
         -moz-transform: translateX(0%);
         -ms-transform: translateX(0%);
@@ -33,7 +33,7 @@
         transform: translateX(0%);
     }
     
-    to {
+    100% {
         -webkit-transform: translateX(-100%);
         -moz-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
@@ -46,7 +46,7 @@
 /* Slide out elements to the right */
 @keyframes slide-right {
     
-    from {
+    0% {
         -webkit-transform: translateX(0%);
         -moz-transform: translateX(0%);
         -ms-transform: translateX(0%);
@@ -54,7 +54,7 @@
         transform: translateX(0%);
     }
     
-    to {
+    100% {
         -webkit-transform: translateX(100%);
         -moz-transform: translateX(100%);
         -ms-transform: translateX(100%);

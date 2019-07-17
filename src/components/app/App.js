@@ -7,7 +7,7 @@ import SplitLayout from "../split-layout/SplitLayout";
 import WorkSiteLayout from "../work-site-layout/WorkSiteLayout";
 import FunSiteLayout from "../fun-site-layout/FunSiteLayout";
 
-import './App.css';
+import styles from './App.module.css';
 
 // Reload page if browser doesn't support history API
 //const supportsHistory = 'pushState' in window.history;
@@ -24,16 +24,12 @@ class App extends React.Component {
 
   }
 
-  // componentWillUpdate will be deprecated in React 17, so favor
-  // use of new getSnapshotBeforeUpdate
-  getSnapshotBeforeUpdate(prevProps, prevState) {
+  // componentWillUpdate will be deprecated in React 17, so hook into
+  // componentDidUpdate instead, in accordance with best practices
+  componentDidUpdate(prevProps, prevState, snapshot) {
 
-    let {location} = prevProps;
-    let {location: newLocation} = this.props;
-
-    let {pathname: path} = location;
-    let {pathname: newPath} = newLocation;
-
+    let {pathname: path} = prevProps.location;
+    let {pathname: newPath} = this.props.location;
 
     // Helper to determine state
     function matchState(targetPath, targetNewPath) {
@@ -45,15 +41,15 @@ class App extends React.Component {
 
       if (matchState('/', '/work') || matchState('/fun', '/')) {
         this.setState({animation: {
-            enterActive: 'page-enter-left',
-            exitActive: 'page-leave-right'
+            enterActive: styles.pageEnterLeft,
+            exitActive: styles.pageLeaveRight
           }});
       }
 
       else if (matchState('/', '/fun') || matchState('/work', '/')) {
         this.setState({animation: {
-            enterActive: 'page-enter-right',
-            exitActive: 'page-leave-left'
+            enterActive: styles.pageEnterRight,
+            exitActive: styles.pageLeaveLeft
           }});
       }
 
@@ -74,7 +70,7 @@ class App extends React.Component {
   render() {
 
     return (
-        <div className="App">
+        <div>
 
           <TransitionGroup childFactory={child => React.cloneElement(child, {classNames: this.state.animation})}>
             <CSSTransition key={this.props.location.key} classNames={this.state.animation} timeout={1000}>

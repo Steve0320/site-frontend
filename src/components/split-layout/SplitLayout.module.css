@@ -1,0 +1,43 @@
+.splitSlider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.splitSliderLink {
+    height: 100%;
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.splitSliderLink:hover {
+    background-color: transparent;
+}
+
+.workSiteLink {
+    background-color: lightgrey;
+    grid-column-start: 1;
+}
+
+.funSiteLink {
+    background-color: black;
+    grid-column-start: 2;
+}
+
+.sliderDescription {
+    width: 50%;
+    height: 25%;
+    background: green;
+}

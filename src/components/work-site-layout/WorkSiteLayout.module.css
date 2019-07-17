@@ -1,0 +1,28 @@
+.workSiteLayout {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    display: grid;
+    grid-template-columns: auto 300px;
+
+    background: orange;
+
+}
+
+.rightNav {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    width: 100%;
+    height: 100%;
+    background: pink;
+}
+
+.workContent {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    background: yellow;
+}

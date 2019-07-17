@@ -4,9 +4,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import {Link} from 'react-router-dom';
 
-import './SplitLayout.css';
+import styles from './SplitLayout.module.css';
 
 class SplitLayout extends React.Component {
 
@@ -22,14 +23,18 @@ class SplitLayout extends React.Component {
     render() {
 
         return (
-            <div className='SplitSlider'>
+            <div className={styles.splitSlider}>
 
-                <Link to={this.props.leftLink} className='SplitSlider-Link' title="TEST">
-                    <p>{this.props.leftLink}</p>
+                <Link to={this.props.leftLink} className={cx(styles.splitSliderLink, styles.workSiteLink)}>
+                    <div className={styles.sliderDescription}>
+                        <p>For Work</p>
+                    </div>
                 </Link>
 
-                <Link to={this.props.rightLink} className='SplitSlider-Link'>
-                    <p>{this.props.rightLink}</p>
+                <Link to={this.props.rightLink} className={cx(styles.splitSliderLink, styles.funSiteLink)}>
+                    <div className={styles.sliderDescription}>
+
+                    </div>
                 </Link>
 
             </div>
