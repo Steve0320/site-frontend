@@ -1,8 +1,9 @@
-/* This component builds on the functionality offered by React Transition
+/*
+ * This component builds on the functionality offered by React Transition
  * Group to allow different transitions when navigating between pages. All
  * one needs to provide is the timeout value, and the getTransition function,
  * which should return the set of CSS classes to use for the current page change.
-* */
+ */
 
 import React from "react";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
@@ -21,7 +22,8 @@ class RouteAnimator extends React.Component {
 
     }
 
-    /* componentWillUpdate will be deprecated in React 17, so hook into componentDidUpdate
+    /*
+     * componentWillUpdate will be deprecated in React 17, so hook into componentDidUpdate
      * instead, in accordance with best practices.
      */
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -35,7 +37,8 @@ class RouteAnimator extends React.Component {
 
     }
 
-    /* Wrap the component's children in a CSS transition, using provided props. Because CSSTransitionGroup
+    /*
+     * Wrap the component's children in a CSS transition, using provided props. Because CSSTransitionGroup
      * does not update the classNames prop when component is exiting, we use the childFactory prop of
      * TransitionGroup to dynamically set the classNames when exiting (for a more thorough explanation, see
      * https://medium.com/lalilo/dynamic-transitions-with-react-router-and-react-transition-group-69ab795815c9)
@@ -44,7 +47,7 @@ class RouteAnimator extends React.Component {
 
         return (
 
-            <div>
+            <React.Fragment>
 
                 <TransitionGroup childFactory={child => React.cloneElement(child, {classNames: this.state.transitionClasses})}>
                     <CSSTransition key={this.props.location.key} classNames={this.state.transitionClasses} timeout={this.props.transitionTimeout}>
@@ -52,7 +55,7 @@ class RouteAnimator extends React.Component {
                     </CSSTransition>
                 </TransitionGroup>
 
-            </div>
+            </React.Fragment>
 
         );
 

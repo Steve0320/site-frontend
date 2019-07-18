@@ -3,8 +3,7 @@ import React from "react";
 import {Route, Switch} from "react-router-dom";
 
 import SplitLayout from "../split-layout/SplitLayout";
-import WorkSiteLayout from "../work-site-layout/WorkSiteLayout";
-import FunSiteLayout from "../fun-site-layout/FunSiteLayout";
+import SideMenuLayout from "../side-menu-layout/SideMenuLayout";
 import RouteAnimator from "../route-animator/RouteAnimator"
 
 import styles from './App.module.css';
@@ -48,8 +47,8 @@ class App extends React.Component {
           <RouteAnimator transitionTimeout={1000} getTransition={this.getTransition}>
             <Switch location={this.props.location}>
               <Route exact path='/' render={() => <SplitLayout leftLink='/work' rightLink='/fun'/>} />
-              <Route path='/work' component={WorkSiteLayout} />
-              <Route path='/fun' component={FunSiteLayout} />
+              <Route path='/work' render={() => <SideMenuLayout menuAlign='right'/>} />
+              <Route path='/fun' render={() => <SideMenuLayout menuAlign='left'/>} />
               <Route render={() => <div>Not Found</div>} />
             </Switch>
           </RouteAnimator>
