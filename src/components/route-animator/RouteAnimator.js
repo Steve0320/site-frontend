@@ -43,7 +43,7 @@ class RouteAnimator extends React.Component {
 
             return {
                 location: props.location,
-                transitionClasses: transition,
+                transitionClasses: transition || {},
                 transitionTime: (transition) ? props.transitionTimeout : 0
             };
         }
@@ -64,7 +64,7 @@ class RouteAnimator extends React.Component {
 
             <React.Fragment>
 
-                <TransitionGroup childFactory={transitionChildFactory({classNames: this.state.transitionClasses || {}, timeout: this.state.transitionTime})}>
+                <TransitionGroup component={null} childFactory={transitionChildFactory({classNames: this.state.transitionClasses, timeout: this.state.transitionTime})}>
                     <CSSTransition key={this.props.location.key} timeout={this.props.transitionTimeout}>
                         {this.props.children}
                     </CSSTransition>

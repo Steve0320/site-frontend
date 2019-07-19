@@ -54,7 +54,7 @@ class App extends React.Component {
   render() {
 
     return (
-        <div>
+        <React.Fragment>
 
           <RouteAnimator transitionTimeout={1000} getTransition={this.getTransition}>
             <Switch location={this.props.location}>
@@ -65,7 +65,7 @@ class App extends React.Component {
             </Switch>
           </RouteAnimator>
 
-        </div>
+        </React.Fragment>
     )
 
   }
