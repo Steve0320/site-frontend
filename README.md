@@ -1,5 +1,5 @@
 ## Project Motivation
-This project contains the source code for my personal website, which is intended to function as a hosting space for my personal projects, as well as a resume/code example repository.
+This project contains the source code for my personal website, which is intended to function as a hosting space for my personal projects, as well as a resume/code example repository. This project is written in React, using the latest coding and design patterns. This project only contains the frontend for the website; the backend is housed under the 'site-backend' repository.
 
 ## Project Organization
 This project is organized using a variant of the component folders pattern. All components are housed in a directory with the same name (i.e. route-animator for the RouteAnimator component). This directory also contains any tests and styles related to this component. This structure makes it easy to find everything related to specific components.
