@@ -1,3 +1,16 @@
+## Project Motivation
+This project contains the source code for my personal website, which is intended to function as a hosting space for my personal projects, as well as a resume/code example repository.
+
+## Project Organization
+This project is organized using a variant of the component folders pattern. All components are housed in a directory with the same name (i.e. route-animator for the RouteAnimator component). This directory also contains any tests and styles related to this component. This structure makes it easy to find everything related to specific components.
+
+Some component folders are nested inside of other component folders. This is done when the component is only used in the context of the other component, and never separately. These components are not intended to be reusable, and only exist for code organization purposes. For example, the individual pages of the site are housed in folders under the App directory.
+
+All other components are housed under the "component" directory.
+
+Most components have a brief description at the top of their javascript file, describing their overall function, and detailing any quirks that may be relevant.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -37,32 +50,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
