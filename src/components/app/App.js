@@ -2,9 +2,11 @@ import React from "react";
 
 import {Route, Switch} from "react-router-dom";
 
-import SplitLayout from "../split-layout/SplitLayout";
-import SideMenuLayout from "../side-menu-layout/SideMenuLayout";
 import RouteAnimator from "../route-animator/RouteAnimator"
+
+import WorkSite from "./work-site/WorkSite";
+import FunSite from "./fun-site/FunSite";
+import HomePage from "./home-page/HomePage";
 
 import styles from './App.module.css';
 
@@ -17,21 +19,31 @@ class App extends React.Component {
 
     // Helper to determine state
     function matchState(targetPath, targetNewPath) {
-      return (curPath === targetPath && newPath === targetNewPath);
+        return (curPath === targetPath && newPath === targetNewPath);
     }
 
     if (matchState('/', '/work') || matchState('/fun', '/')) {
-      return {
-        enterActive: styles.pageEnterLeft,
-        exitActive: styles.pageLeaveRight
-      };
+        return {
+            enterActive: styles.pageEnterLeft,
+            exitActive: styles.pageLeaveRight
+        };
     } else if (matchState('/', '/fun') || matchState('/work', '/')) {
-      return {
-        enterActive: styles.pageEnterRight,
-        exitActive: styles.pageLeaveLeft
-      };
+        return {
+            enterActive: styles.pageEnterRight,
+            exitActive: styles.pageLeaveLeft
+        };
+    } else if (matchState('/work', '/fun')) {
+        return {
+            enterActive: styles.pageEnterRight,
+            exitActive: styles.pageLeaveLeft
+        };
+    } else if (matchState('/fun', '/work')) {
+        return {
+            enterActive: styles.pageEnterLeft,
+            exitActive: styles.pageLeaveRight
+        };
     } else {
-      return false;
+        return false;
     }
 
   }
@@ -41,30 +53,14 @@ class App extends React.Component {
    */
   render() {
 
-      const workSiteLinks = [
-          {title: 'test', link: '/test'},
-          {title: 'test2', link: '/test2'}
-      ];
-
-      const workSiteRender = () => (
-          <SideMenuLayout menuAlign='right' menuItems={workSiteLinks}>
-          </SideMenuLayout>
-      );
-
-      const funSiteRender = () => (
-          <SideMenuLayout menuAlign='left'>
-          </SideMenuLayout>
-      );
-
     return (
         <div>
 
           <RouteAnimator transitionTimeout={1000} getTransition={this.getTransition}>
             <Switch location={this.props.location}>
-              <Route exact path='/' render={() => <SplitLayout leftLink='/work' rightLink='/fun'/>} />
-              <Route path='/work' render={workSiteRender} />
-              <Route path='/fun' render={funSiteRender} />
-              <Route path='/test' render={funSiteRender} />
+              <Route exact path='/' component={HomePage} />
+              <Route path='/work' component={WorkSite} />
+              <Route path='/fun' component={FunSite} />
               <Route render={() => <div>Not Found</div>} />
             </Switch>
           </RouteAnimator>

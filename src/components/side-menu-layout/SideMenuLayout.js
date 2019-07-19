@@ -15,14 +15,15 @@ const SideMenuLayout = (props) => {
 
     const {menuAlign} = props;
     const menuIsRight = (menuAlign === 'right');
+    const menuClass = (menuIsRight) ? styles.menuItemRight : styles.menuItemLeft;
 
     // Build up menu, style according to side
     const menu = (
-        <div className={cx(styles.sideMenu, (menuIsRight) ? styles.sideMenuRight : styles.sideMenuLeft)}>
+        <div className={styles.sideMenu}>
 
             {props.menuItems.map((item) => (
-                <Link to={item.link} key={item.title}>
-                    <p>{item.title}</p>
+                <Link className={cx(styles.menuItem, menuClass)} to={item.link} key={item.title}>
+                    {item.title}
                 </Link>
             ))}
 

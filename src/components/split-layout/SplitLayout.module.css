@@ -1,4 +1,4 @@
-.splitSlider {
+.splitLayout {
     position: absolute;
     top: 0;
     left: 0;
@@ -9,7 +9,8 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.splitSliderLink {
+.link {
+
     height: 100%;
     width: 100%;
     border: none;
@@ -22,21 +23,21 @@
 
 }
 
-.splitSliderLink:hover {
+.link:hover {
     background-color: transparent;
 }
 
-.workSiteLink {
+.leftLink {
     background-color: lightgrey;
     grid-column-start: 1;
 }
 
-.funSiteLink {
+.rightLink {
     background-color: black;
     grid-column-start: 2;
 }
 
-.sliderDescription {
+.description {
     width: 50%;
     height: 25%;
     background: green;

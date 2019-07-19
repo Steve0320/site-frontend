@@ -9,47 +9,31 @@ import {Link} from 'react-router-dom';
 
 import styles from './SplitLayout.module.css';
 
-class SplitLayout extends React.Component {
+const SplitLayout = (props) => (
 
-    // Set up initial state and bindings
-    constructor(props) {
+    <div className={styles.splitLayout}>
 
-        super(props);
+        <Link to={props.leftLink} className={cx(styles.link, styles.leftLink)}>
+            <div className={styles.description}>
+                <p>For Work</p>
+            </div>
+        </Link>
 
-        this.state = { slidingLeft: false, slidingRight: false };
-
-    }
-
-    render() {
-
-        return (
-            <div className={styles.splitSlider}>
-
-                <Link to={this.props.leftLink} className={cx(styles.splitSliderLink, styles.workSiteLink)}>
-                    <div className={styles.sliderDescription}>
-                        <p>For Work</p>
-                    </div>
-                </Link>
-
-                <Link to={this.props.rightLink} className={cx(styles.splitSliderLink, styles.funSiteLink)}>
-                    <div className={styles.sliderDescription}>
-
-                    </div>
-                </Link>
+        <Link to={props.rightLink} className={cx(styles.link, styles.rightLink)}>
+            <div className={styles.description}>
 
             </div>
-        );
+        </Link>
 
-    }
+    </div>
 
-}
+);
 
 SplitLayout.propTypes = {
     leftLink: PropTypes.string.isRequired,
     rightLink: PropTypes.string.isRequired,
     leftImage: PropTypes.string,
-    rightImage: PropTypes.string,
-    onLinkClick: PropTypes.func
+    rightImage: PropTypes.string
 };
 
 SplitLayout.defaultProps = {
