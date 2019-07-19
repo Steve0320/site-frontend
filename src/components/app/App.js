@@ -31,7 +31,7 @@ class App extends React.Component {
         exitActive: styles.pageLeaveLeft
       };
     } else {
-      return {};
+      return false;
     }
 
   }
@@ -41,14 +41,30 @@ class App extends React.Component {
    */
   render() {
 
+      const workSiteLinks = [
+          {title: 'test', link: '/test'},
+          {title: 'test2', link: '/test2'}
+      ];
+
+      const workSiteRender = () => (
+          <SideMenuLayout menuAlign='right' menuItems={workSiteLinks}>
+          </SideMenuLayout>
+      );
+
+      const funSiteRender = () => (
+          <SideMenuLayout menuAlign='left'>
+          </SideMenuLayout>
+      );
+
     return (
         <div>
 
           <RouteAnimator transitionTimeout={1000} getTransition={this.getTransition}>
             <Switch location={this.props.location}>
               <Route exact path='/' render={() => <SplitLayout leftLink='/work' rightLink='/fun'/>} />
-              <Route path='/work' render={() => <SideMenuLayout menuAlign='right'/>} />
-              <Route path='/fun' render={() => <SideMenuLayout menuAlign='left'/>} />
+              <Route path='/work' render={workSiteRender} />
+              <Route path='/fun' render={funSiteRender} />
+              <Route path='/test' render={funSiteRender} />
               <Route render={() => <div>Not Found</div>} />
             </Switch>
           </RouteAnimator>

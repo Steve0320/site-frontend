@@ -6,6 +6,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import cx from "classnames";
 
 import styles from "./SideMenuLayout.module.css";
@@ -13,12 +14,17 @@ import styles from "./SideMenuLayout.module.css";
 const SideMenuLayout = (props) => {
 
     const {menuAlign} = props;
-
-    let menuClass = (menuAlign === 'left') ? styles.sideMenuLeft : styles.sideMenuRight;
+    const menuIsRight = (menuAlign === 'right');
 
     // Build up menu, style according to side
     const menu = (
-        <div className={cx(styles.sideMenu, menuClass)}>
+        <div className={cx(styles.sideMenu, (menuIsRight) ? styles.sideMenuRight : styles.sideMenuLeft)}>
+
+            {props.menuItems.map((item) => (
+                <Link to={item.link} key={item.title}>
+                    <p>{item.title}</p>
+                </Link>
+            ))}
 
         </div>
     );
@@ -27,13 +33,13 @@ const SideMenuLayout = (props) => {
     return (
         <div className={styles.layout}>
 
-            {props.menuAlign === 'left' ? menu : null}
+            {(!menuIsRight) ? menu : null}
 
             <div className={styles.content}>
-                {props.children ? props.children.slice(1) : null}
+                {props.children}
             </div>
 
-            {props.menuAlign === 'right' ? menu : null}
+            {(menuIsRight) ? menu : null}
 
         </div>
     )
@@ -41,7 +47,12 @@ const SideMenuLayout = (props) => {
 };
 
 SideMenuLayout.propTypes = {
-    menuAlign: PropTypes.oneOf(['right', 'left']).isRequired
+    menuAlign: PropTypes.oneOf(['right', 'left']).isRequired,
+    menuItems: PropTypes.arrayOf(PropTypes.object)
+};
+
+SideMenuLayout.defaultProps = {
+    menuItems: []
 };
 
 export default SideMenuLayout;

@@ -7,8 +7,12 @@
 
 import React from "react";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
-import {withRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import {withRouter} from "react-router-dom";
+import PropTypes from "prop-types";
+
+const transitionChildFactory = (props) => (
+    child => React.cloneElement(child, props)
+);
 
 class RouteAnimator extends React.Component {
 
@@ -17,23 +21,34 @@ class RouteAnimator extends React.Component {
         super(props);
 
         this.state = {
-            transitionClasses: {}
+            transitionClasses: {},
+            transitionTime: 0,
+            location: this.props.location
         };
 
     }
 
     /*
-     * componentWillUpdate will be deprecated in React 17, so hook into componentDidUpdate
-     * instead, in accordance with best practices.
+     * Set transition classes/timeouts based on location props. Replaces
+     * componentWillReceiveProps, which is deprecated.
      */
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    static getDerivedStateFromProps(props, state) {
 
-        let {pathname: path} = prevProps.location;
-        let {pathname: newPath} = this.props.location;
+        let {pathname: path} = state.location;
+        let {pathname: newPath} = props.location;
 
         if (path !== newPath) {
-            this.setState({transitionClasses: this.props.getTransition(path, newPath)})
+
+            let transition = props.getTransition(path, newPath);
+
+            return {
+                location: props.location,
+                transitionClasses: transition,
+                transitionTime: (transition) ? props.transitionTimeout : 0
+            };
         }
+
+        return null;
 
     }
 
@@ -49,8 +64,8 @@ class RouteAnimator extends React.Component {
 
             <React.Fragment>
 
-                <TransitionGroup childFactory={child => React.cloneElement(child, {classNames: this.state.transitionClasses})}>
-                    <CSSTransition key={this.props.location.key} classNames={this.state.transitionClasses} timeout={this.props.transitionTimeout}>
+                <TransitionGroup childFactory={transitionChildFactory({classNames: this.state.transitionClasses || {}, timeout: this.state.transitionTime})}>
+                    <CSSTransition key={this.props.location.key} timeout={this.props.transitionTimeout}>
                         {this.props.children}
                     </CSSTransition>
                 </TransitionGroup>
