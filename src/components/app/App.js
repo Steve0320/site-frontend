@@ -15,6 +15,7 @@ import styles from './App.module.css';
 
 class App extends React.Component {
 
+    // TODO: should have option to match prefix only
   getTransition(curPath, newPath) {
 
     // Helper to determine state

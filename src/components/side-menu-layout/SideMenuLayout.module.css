@@ -13,7 +13,7 @@
 }
 
 .sideMenu {
-    flex: 0 0 300px;
+    flex: 0 0 200px;
     height: 100%;
     background-color: green;
     display: inline-block;
