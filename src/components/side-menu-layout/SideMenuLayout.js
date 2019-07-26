@@ -50,8 +50,8 @@ const SideMenuLayout = (props) => {
 SideMenuLayout.propTypes = {
     menuAlign: PropTypes.oneOf(['right', 'left']).isRequired,
     menuItems: PropTypes.arrayOf(PropTypes.object),
-    menuClass: PropTypes.object,
-    menuItemClass: PropTypes.object
+    menuClass: PropTypes.string,
+    menuItemClass: PropTypes.string
 };
 
 SideMenuLayout.defaultProps = {
