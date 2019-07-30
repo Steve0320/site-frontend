@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 import SideMenuLayout from "../../side-menu-layout/SideMenuLayout";
-import CodeProjectLayout from "../../code-project-layout/CodeProjectLayout";
+import CodeProjectLoader from "../../code-project-layout/CodeProjectLoader";
 
 import styles from "./FunSite.module.css";
 
@@ -33,12 +33,12 @@ const FunSite = () => {
         <SideMenuLayout menuAlign='left' menuItems={menuItems} menuClass={styles.sideMenu} menuItemClass={styles.sideMenuItems}>
             <div className={styles.content}>
                 <Switch>
-                    <Route path={links.museFrontend} render={()=>(<CodeProjectLayout projectKey="muse-frontend" />)} />
-                    <Route path={links.museBackend} render={()=>(<CodeProjectLayout projectKey="muse-backend" />)} />
+                    <Route path={links.museFrontend} render={()=>(<CodeProjectLoader projectKey="muse-frontend" />)} />
+                    <Route path={links.museBackend} render={()=>(<CodeProjectLoader projectKey="muse-backend" />)} />
                     <Route path={links.borderDnD} render={()=>(<div>Coming soon</div>)} />
-                    <Route path={links.grafana} render={()=>(<CodeProjectLayout projectKey="grafanascripts" />)} />
-                    <Route path={links.wonderhack} render={()=>(<CodeProjectLayout projectKey="wonderhack" />)} />
-                    <Route path={links.shaftquack} render={()=>(<CodeProjectLayout projectKey="shaftquack" />)} />
+                    <Route path={links.grafana} render={()=>(<CodeProjectLoader projectKey="grafanascripts" />)} />
+                    <Route path={links.wonderhack} render={()=>(<CodeProjectLoader projectKey="wonderhack" />)} />
+                    <Route path={links.shaftquack} render={()=>(<CodeProjectLoader projectKey="shaftquack" />)} />
                     <Route render={() => (<div>About</div>)} />
                 </Switch>
             </div>
