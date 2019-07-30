@@ -1,0 +1,34 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "header header" "description information";
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+    grid-area: header;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.headerTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.description {
+    width: 100%;
+    height: 100%;
+    grid-area: description;
+}
+
+.information {
+    width: 100%;
+    height: 100%;
+    grid-area: information;
+}
